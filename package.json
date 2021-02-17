@@ -1,0 +1,49 @@
+{
+    "name": "react-i10-timeline",
+    "version": "0.0.6",
+    "description": "Interactive (i10) timeline visualization",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "files": [
+        "css",
+        "es",
+        "lib",
+        "umd"
+    ],
+    "peerDependencies": {
+        "react": "16.x"
+    },
+    "devDependencies": {
+        "node-sass-chokidar": "^0.0.3",
+        "npm-run-all": "^4.1.2",
+        "nwb": "0.25.x",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    },
+    "author": "Skypyxis",
+    "license": "MIT",
+    "repository": "skypyxis/react-i10-timeline",
+    "homepage": "https://github.com/skypyxis/react-i10-timeline#readme",
+    "keywords": [
+        "timeline",
+        "interactive",
+        "react",
+        "gantt",
+        "chart",
+        "graph",
+        "visualization"
+    ],
+    "scripts": {
+        "build": "npm-run-all build-css build-js",
+        "build-css": "node-sass-chokidar src/styles/src -o src/styles",
+        "build-js": "nwb build-react-component --copy-files",
+        "clean": "nwb clean-module && nwb clean-demo",
+        "prepublishOnly": "npm run build",
+        "start": "npm-run-all -p watch-css start-js",
+        "start-js": "nwb serve-react-demo",
+        "test": "nwb test-react",
+        "test:coverage": "nwb test-react --coverage",
+        "test:watch": "nwb test-react --server",
+        "watch-css": "npm run build-css && node-sass-chokidar src/styles/src -o src/styles --watch --recursive"
+    }
+}
